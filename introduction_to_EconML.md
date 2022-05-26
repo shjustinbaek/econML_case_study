@@ -73,17 +73,25 @@
 - 지금까지 소개해준 방식으로 CATE 추정을 진행한다면, .est 메소드는 CATE 추정치만 반환해줍니다.
 
 ![image](https://user-images.githubusercontent.com/46898478/169684111-e2a41b40-872f-46d0-816a-f2f424ce52a1.png)
-- .fit 메소드에 inference="bootstrap" argument를 추가하고 .effect_inference 메소드를 사용하면 Generic bootstrap inference 방식으로 추정된 CATE의 confidence interval도 구해볼 수 있습니다.
-- Generic bootstrap 방식이란?
-    - 확인 필요!
+- .effect_inference 메소드를 사용하면 각 추정된 CATE의 confidence interval을 확인할 수 있습니다.
 
 ![image](https://user-images.githubusercontent.com/46898478/169684113-4ba72cf0-52dc-4491-b8b3-66145892751c.png)
-- 
+- .ate_inferece 메소드를 사용하면 ate도 편리하게 추정할 수 있습니다.
 
 ![image](https://user-images.githubusercontent.com/46898478/169684117-9db19882-97f0-4877-99ac-d5f70c140f4c.png)
 ![image](https://user-images.githubusercontent.com/46898478/169684120-d70d5fbd-c81d-499d-84e9-bb5c3c77ef42.png)
 ![image](https://user-images.githubusercontent.com/46898478/169684124-47718780-84fd-4df7-b095-1ced088536e2.png)
 ![image](https://user-images.githubusercontent.com/46898478/169684128-c2d5064a-84d6-4bd5-b00f-43cf49bd4dd7.png)
+- 모든 causal 모델 평가에 사용될 수 있는 Rlearner loss를 RScorer메소드로 구할 수 있습니다.
+https://econml.azurewebsites.net/_autosummary/econml.score.RScorer.html?highlight=rscore#econml.score.RScorer.score
+- Rlearner loss는 다음과 같이 구하게됩니다.
+    - $Y_{res} = Y - E[Y|X, W]$
+    - $T_{res} = T - E[Y|X, W]$
+    - $loss(CATE) = E_n[(Y_{res} - cate(X) * T_{res})^2$
+    - $base loss = min_{theta} E_n[(Yres - theta * T_{res})^2]$
+    - $score = 1 - loss(cate) / base loss$
+- causal effect에 heterogeneity의 개념을 도입했을 때 outcome을 얼마나 더 잘 설명할 수 있는지 평가하는 방법. 
+
 ![image](https://user-images.githubusercontent.com/46898478/169684133-259a88cd-7326-4530-ada0-8cf13123120e.png)
 ![image](https://user-images.githubusercontent.com/46898478/169684134-f15de271-9338-429f-baa7-c39da79be828.png)
 ![image](https://user-images.githubusercontent.com/46898478/169684136-f6ff01fe-3ea1-4738-b0df-a8484e6faa03.png)
