@@ -117,3 +117,5 @@ ATE를 구한다면 즉 constant한 $\theta$값이 알고싶다면 3번 모델�
 ![image](https://user-images.githubusercontent.com/46898478/172962746-e546012b-3ec3-4f25-94ea-564658b7f5e6.png)
 ![image](https://user-images.githubusercontent.com/46898478/172962760-51bb9e65-592e-44c2-ac0b-3b8b0d04caad.png)
 ![image](https://user-images.githubusercontent.com/46898478/172962772-7deb43fb-6de9-4479-98cf-d69960b7ce22.png)
+
+https://colab.research.google.com/drive/1Ow7ArXRn1NJq47OLvchi26RRTdm94yv8?usp=sharing
